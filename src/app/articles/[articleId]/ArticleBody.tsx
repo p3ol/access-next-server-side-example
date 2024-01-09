@@ -35,6 +35,7 @@ const ArticleBody = ({ _article }: ArticleBodyProps) => {
     >
       <p>{article.content || article.preview }</p>
       <Paywall
+        id="paywall"
         contentRef={contentRef}
         events={{
           outdatedBrowser: () => {},

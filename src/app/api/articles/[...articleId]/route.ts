@@ -1,0 +1,47 @@
+
+import { NextRequest } from 'next/server';
+import { headers } from 'next/headers'
+import { articles } from '@/db';
+
+export const GET = (
+  req: NextRequest,
+  { params }: { params: { articleId: string } }
+) => {
+  const { articleId } = params;
+  const article = articles.find((article) => article.id === Number(articleId));
+  if (!article) {
+    return new Response(JSON.stringify('Not found'), {
+      status: 404,
+    });
+  }
+
+  const { content, ...articleWithoutContent } = article;
+  return new Response(JSON.stringify(articleWithoutContent), {
+    status: 200,
+  });
+};
+
+export const POST = (
+  req: NextRequest,
+  { params }: { params: { articleId: string } }
+) => {
+  const { articleId } = params;
+  const article = articles.find((article) => article.id === Number(articleId));
+  const headersList = headers();
+  const authorization = headersList.get('authorization')
+  if (authorization !== `Bearer ${process.env.PRIVATE_KEY}`) {
+    return new Response(JSON.stringify('Unauthorized'), {
+      status: 401,
+    });
+  }
+
+  if (!article) {
+    return new Response(JSON.stringify('Not found'), {
+      status: 404,
+    });
+  }
+
+  return new Response(JSON.stringify(article), {
+    status: 200,
+  });
+};
