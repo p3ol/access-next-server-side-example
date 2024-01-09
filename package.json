@@ -6,9 +6,9 @@
     "node": "18 || 20"
   },
   "scripts": {
-    "dev": "next dev",
+    "dev": "next dev -p 5555",
     "build": "next build",
-    "start": "next start",
+    "start": "next start -p 5555",
     "lint": "next lint"
   },
   "dependencies": {
