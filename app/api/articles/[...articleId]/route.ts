@@ -1,42 +1,45 @@
-
 import { NextRequest } from 'next/server';
-import { headers } from 'next/headers'
-import { articles } from '@/db';
+import { headers } from 'next/headers';
+
+import { articles } from '~/db';
 
 export const GET = (
-  req: NextRequest,
+  _: NextRequest,
   { params }: { params: { articleId: string } }
 ) => {
   const { articleId } = params;
-  const article = articles.find((article) => article.id === Number(articleId));
+  const article = articles.find(article => article.id === Number(articleId));
+
   if (!article) {
-    return new Response(JSON.stringify('Not found'), {
+    return new Response('not_found', {
       status: 404,
     });
   }
 
   const { content, ...articleWithoutContent } = article;
+
   return new Response(JSON.stringify(articleWithoutContent), {
     status: 200,
   });
 };
 
 export const POST = (
-  req: NextRequest,
+  _: NextRequest,
   { params }: { params: { articleId: string } }
 ) => {
   const { articleId } = params;
-  const article = articles.find((article) => article.id === Number(articleId));
+  const article = articles.find(article => article.id === Number(articleId));
   const headersList = headers();
-  const authorization = headersList.get('authorization')
+  const authorization = headersList.get('authorization');
+
   if (authorization !== `Bearer ${process.env.PRIVATE_KEY}`) {
-    return new Response(JSON.stringify('Unauthorized'), {
+    return new Response('unauthorized', {
       status: 401,
     });
   }
 
   if (!article) {
-    return new Response(JSON.stringify('Not found'), {
+    return new Response('unauthorized', {
       status: 404,
     });
   }

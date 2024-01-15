@@ -1,20 +1,20 @@
+import type { ComponentPropsWithoutRef } from 'react';
+
 import './globals.css';
 
 export const metadata = {
   title: 'Poool Next Example',
   description: 'An example of poool paywall with Next.js',
-}
+};
 
-export default function RootLayout({
+export default function RootLayout ({
   children,
-}: {
-  children: React.ReactNode
-}) {
+}: ComponentPropsWithoutRef<'html'>) {
   return (
     <html lang="en">
       <body>
-        {children}
+        { children }
       </body>
     </html>
-  )
+  );
 }
