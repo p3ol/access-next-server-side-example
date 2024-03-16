@@ -321,7 +321,7 @@ __metadata:
   resolution: "@poool/access-next-server-side-example@workspace:."
   dependencies:
     "@poool/react-access": "npm:3.0.2"
-    "@types/node": "npm:20.11.1"
+    "@types/node": "npm:20.11.28"
     "@types/react": "npm:18.2.48"
     "@types/react-dom": "npm:18.2.18"
     autoprefixer: "npm:10.4.16"
@@ -374,12 +374,12 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/node@npm:20.11.1":
-  version: 20.11.1
-  resolution: "@types/node@npm:20.11.1"
+"@types/node@npm:20.11.28":
+  version: 20.11.28
+  resolution: "@types/node@npm:20.11.28"
   dependencies:
     undici-types: "npm:~5.26.4"
-  checksum: f665cdce28b0b6e57338d1f74e0599ee9b10eac74cff729921c8f473807398e9aba2f8cf74c74a4d3dfbc2d616c73267da7de3003ed3c8152ea366bf4c96a91a
+  checksum: c599745243ed9ae4ca87460f18f88d02ab7424b545136aa504ed7a1d898e3a9bb133c927bcc7e861f79d7f6043ef917a173e780c8a001e129221e92f6d97b0ee
   languageName: node
   linkType: hard
 
