@@ -1,7 +1,7 @@
 'use client';
 
 import { useRef, useState } from 'react';
-import { AccessContext, Paywall } from '@poool/react-access';
+import { AccessContext, Paywall, Pixel } from '@poool/react-access';
 
 import type { ArticleItem } from '~/types';
 import { releaseArticle } from '~/actions';
@@ -32,6 +32,7 @@ const ArticleBody = ({ _article }: ArticleBodyProps) => {
     <AccessContext
       appId={process.env.NEXT_PUBLIC_POOOL_ID as string}
       config={{ cookies_enabled: true, force_widget: 'gift' }}
+      withAudit={true}
     >
       <p>{ article.content || article.preview }</p>
       <Paywall
@@ -42,6 +43,8 @@ const ArticleBody = ({ _article }: ArticleBodyProps) => {
           release: onRelease,
         }}
       />
+
+      <Pixel type="page-view" pageType="premium" />
     </AccessContext>
   );
 };
