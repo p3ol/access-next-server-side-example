@@ -3,11 +3,11 @@ import { headers } from 'next/headers';
 
 import { articles } from '~/db';
 
-export const GET = (
+export const GET = async (
   _: NextRequest,
   { params }: { params: { articleId: string } }
 ) => {
-  const { articleId } = params;
+  const { articleId } = await params;
   const article = articles.find(article => article.id === Number(articleId));
 
   if (!article) {
@@ -27,7 +27,7 @@ export const POST = async (
   _: NextRequest,
   { params }: { params: { articleId: string } }
 ) => {
-  const { articleId } = params;
+  const { articleId } = await params;
   const article = articles.find(article => article.id === Number(articleId));
   const headersList = await headers();
   const authorization = headersList.get('authorization');
