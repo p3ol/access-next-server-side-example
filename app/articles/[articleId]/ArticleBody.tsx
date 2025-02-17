@@ -1,6 +1,6 @@
 'use client';
 
-import { useRef, useState } from 'react';
+import { useState } from 'react';
 import { AccessContext, Paywall, Pixel } from '@poool/react-access';
 
 import type { ArticleItem } from '~/types';
@@ -12,7 +12,6 @@ export interface ArticleBodyProps {
 
 const ArticleBody = ({ _article }: ArticleBodyProps) => {
   const [article, setArticle] = useState(_article);
-  const contentRef = useRef();
 
   const onRelease = async (): Promise<void> => {
     try {
@@ -37,7 +36,6 @@ const ArticleBody = ({ _article }: ArticleBodyProps) => {
       <p>{ article.content || article.preview }</p>
       <Paywall
         id="paywall"
-        contentRef={contentRef}
         events={{
           outdatedBrowser: () => {},
           release: onRelease,

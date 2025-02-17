@@ -8,8 +8,9 @@ export interface ArticleProps {
 }
 
 const Article = async ({
-  params: { articleId },
+  params,
 }: ArticleProps) => {
+  const { articleId } = await params;
   const article: ArticleItem = await fetch(
     `http://localhost:3000/api/articles/${articleId}`
   ).then((res) => res.json());

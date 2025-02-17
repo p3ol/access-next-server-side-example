@@ -23,13 +23,13 @@ export const GET = (
   });
 };
 
-export const POST = (
+export const POST = async (
   _: NextRequest,
   { params }: { params: { articleId: string } }
 ) => {
   const { articleId } = params;
   const article = articles.find(article => article.id === Number(articleId));
-  const headersList = headers();
+  const headersList = await headers();
   const authorization = headersList.get('authorization');
 
   if (authorization !== `Bearer ${process.env.PRIVATE_KEY}`) {
