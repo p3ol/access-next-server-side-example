@@ -540,7 +540,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@poool/access-next-server-side-example@workspace:."
   dependencies:
-    "@poool/react-access": "npm:4.1.0"
+    "@poool/react-access": "npm:4.1.1"
     "@types/node": "npm:22.13.4"
     "@types/react": "npm:19.0.10"
     "@types/react-dom": "npm:19.0.4"
@@ -556,15 +556,15 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@poool/react-access@npm:4.1.0":
-  version: 4.1.0
-  resolution: "@poool/react-access@npm:4.1.0"
+"@poool/react-access@npm:4.1.1":
+  version: 4.1.1
+  resolution: "@poool/react-access@npm:4.1.1"
   dependencies:
     "@junipero/core": "npm:3.10.0"
     "@types/poool-access": "npm:5.18.0"
   peerDependencies:
     react: ^16.8.0 || ^17.0.0 || ^18.0.0 || ^19.0.0
-  checksum: 10c0/8e43be5af8287fc5cb29634c9164a860a53b242eeabf4dfbccd5453c46d66773df62bf0250b40a9c6a2f336db0ab1b001b4f46159be225ead397a7edf345e11f
+  checksum: 10c0/0e6fb90de66ae7b88f6fdbd9124edb53643a54337d7323534ba93e2c1ed398fcd6e46ae0dc7f00846e5d0cfb51aa2cbdf16e98f76d56cd0f59ba712e30f079e1
   languageName: node
   linkType: hard
 
