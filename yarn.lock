@@ -401,10 +401,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@junipero/core@npm:3.10.0":
-  version: 3.10.0
-  resolution: "@junipero/core@npm:3.10.0"
-  checksum: 10c0/46d1f2417f6bb5fb7e99a32464090550d61ae5cb9c28d945c5480e9bbcda507f3414a35f7fbbdbd1afcf21faea0c997bbde13a09d5a03952d6c589bc2cd3ba93
+"@junipero/core@npm:3.12.20":
+  version: 3.12.20
+  resolution: "@junipero/core@npm:3.12.20"
+  checksum: 10c0/49be75bde8890b7d43f4748304cf3c51a625b3d3b951a909e22b14dd73e9492d79bd09d27d8d8ddeefb4c50ec6b0d77582c184f125d2736388ff812389eeb44e
   languageName: node
   linkType: hard
 
@@ -540,7 +540,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@poool/access-next-server-side-example@workspace:."
   dependencies:
-    "@poool/react-access": "npm:4.1.0"
+    "@poool/react-access": "npm:4.1.6"
     "@types/node": "npm:22.13.4"
     "@types/react": "npm:19.0.10"
     "@types/react-dom": "npm:19.0.4"
@@ -556,15 +556,15 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@poool/react-access@npm:4.1.0":
-  version: 4.1.0
-  resolution: "@poool/react-access@npm:4.1.0"
+"@poool/react-access@npm:4.1.6":
+  version: 4.1.6
+  resolution: "@poool/react-access@npm:4.1.6"
   dependencies:
-    "@junipero/core": "npm:3.10.0"
-    "@types/poool-access": "npm:5.18.0"
+    "@junipero/core": "npm:3.12.20"
+    "@types/poool-access": "npm:5.18.1"
   peerDependencies:
     react: ^16.8.0 || ^17.0.0 || ^18.0.0 || ^19.0.0
-  checksum: 10c0/8e43be5af8287fc5cb29634c9164a860a53b242eeabf4dfbccd5453c46d66773df62bf0250b40a9c6a2f336db0ab1b001b4f46159be225ead397a7edf345e11f
+  checksum: 10c0/b1a5ad5bdf17cb010066bd007b7f68dabf2924892f0787a46d0560c9e811bb7ba6d2f1bcd6f103c842535b025c3ac58db5d4b0e208915dd071de8d66df59ed9b
   languageName: node
   linkType: hard
 
@@ -628,10 +628,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/poool-access@npm:5.18.0":
-  version: 5.18.0
-  resolution: "@types/poool-access@npm:5.18.0"
-  checksum: 10c0/961e1f64d0f16d31de654982b4f07faf8e5fd4bd1a177b68abf1a95ddd6185a381af5883e309840fa8552b3c1f022a27acf244754517f5efb0194fed9238ef2d
+"@types/poool-access@npm:5.18.1":
+  version: 5.18.1
+  resolution: "@types/poool-access@npm:5.18.1"
+  checksum: 10c0/3b0b5b61e3fc329f53da4ab1727926048c1abef38c03e59265a966d7b213271bebc50b814cc30615ca88d9a5b7f8dc7ebcc1791c08f5c3beb6e27ff90a022fe2
   languageName: node
   linkType: hard
 
