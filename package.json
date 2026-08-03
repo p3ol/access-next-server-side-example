@@ -8,12 +8,14 @@
     "lint": "next lint"
   },
   "dependencies": {
-    "@poool/react-access": "4.1.0",
+    "@poool/react-access": "4.1.6",
+    "jsonwebtoken": "9.0.3",
     "next": "15.1.7",
     "react": "19.0.0",
     "react-dom": "19.0.0"
   },
   "devDependencies": {
+    "@types/jsonwebtoken": "9",
     "@types/node": "22.13.4",
     "@types/react": "19.0.10",
     "@types/react-dom": "19.0.4",

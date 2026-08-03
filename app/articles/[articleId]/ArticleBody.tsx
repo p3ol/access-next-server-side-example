@@ -1,7 +1,12 @@
 'use client';
 
 import { useState } from 'react';
-import { AccessContext, Paywall, Pixel } from '@poool/react-access';
+import {
+  type AccessReleaseEvent,
+  AccessContext,
+  Paywall,
+  Pixel,
+} from '@poool/react-access';
 
 import type { ArticleItem } from '~/types';
 import { releaseArticle } from '~/actions';
@@ -13,9 +18,12 @@ export interface ArticleBodyProps {
 const ArticleBody = ({ _article }: ArticleBodyProps) => {
   const [article, setArticle] = useState(_article);
 
-  const onRelease = async (): Promise<void> => {
+  const onRelease = async (e: AccessReleaseEvent): Promise<void> => {
     try {
-      const releasedArticle = await releaseArticle(article.id);
+      const releasedArticle = await releaseArticle(
+        article.id,
+        e.releaseSignature
+      );
 
       if (releasedArticle) {
         setArticle(releasedArticle);

@@ -1,6 +1,25 @@
 'use server';
 
-export async function releaseArticle(id: Number) {
+import jwt from 'jsonwebtoken';
+
+export async function releaseArticle(id: Number, releaseSignature?: string) {
+  if (releaseSignature) {
+    try {
+      const releaseSignatureKey = process.env.RELEASE_SIGNATURE_KEY;
+
+      if (!releaseSignatureKey) {
+        throw new Error('Missing RELEASE_SIGNATURE_KEY environment variable');
+      }
+
+      const content = jwt.verify(releaseSignature, releaseSignatureKey, {
+        algorithms: ['RS256'],
+      });
+      console.log(content);
+    } catch {
+      return { error: 'Invalid release signature' };
+    }
+  }
+
   const response = await fetch(`http://localhost:3000/api/articles/${id}`, {
     method: 'POST',
     headers: {
