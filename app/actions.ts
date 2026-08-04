@@ -12,7 +12,7 @@ export async function releaseArticle(id: Number, releaseSignature?: string) {
       }
 
       const content = jwt.verify(releaseSignature, releaseSignatureKey, {
-        algorithms: ['RS256'],
+        algorithms: ['RS512'],
       });
       console.log(content);
     } catch {
