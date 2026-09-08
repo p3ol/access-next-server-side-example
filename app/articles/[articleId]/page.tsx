@@ -2,9 +2,9 @@ import type { ArticleItem } from '~/types';
 import ArticleBody from './ArticleBody';
 
 export interface ArticleProps {
-  params: {
+  params: Promise<{
     articleId: string;
-  };
+  }>;
 }
 
 const Article = async ({

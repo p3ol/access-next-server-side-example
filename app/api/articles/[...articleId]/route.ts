@@ -5,7 +5,7 @@ import { articles } from '~/db';
 
 export const GET = async (
   _: NextRequest,
-  { params }: { params: { articleId: string } }
+  { params }: { params: Promise<{ articleId: string }> }
 ) => {
   const { articleId } = await params;
   const article = articles.find(article => article.id === Number(articleId));
@@ -26,7 +26,7 @@ export const GET = async (
 
 export const POST = async (
   _: NextRequest,
-  { params }: { params: { articleId: string } }
+  { params }: { params: Promise<{ articleId: string }> }
 ) => {
   const { articleId } = await params;
   const article = articles.find(article => article.id === Number(articleId));
