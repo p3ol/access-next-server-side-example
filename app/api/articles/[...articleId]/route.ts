@@ -16,9 +16,10 @@ export const GET = async (
     });
   }
 
-  const { content, ...articleWithoutContent } = article;
-
-  return new Response(JSON.stringify(articleWithoutContent), {
+  return new Response(JSON.stringify({
+    ...article,
+    content: ''
+  }), {
     status: 200,
   });
 };

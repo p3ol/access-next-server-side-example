@@ -1,24 +1,36 @@
 'use server';
 
-import jwt from 'jsonwebtoken';
+import jwt, { type JwtPayload } from 'jsonwebtoken';
+import { cookies } from 'next/headers';
 
-export async function releaseArticle(id: Number, releaseSignature?: string) {
-  if (releaseSignature) {
+export async function releaseArticle(id: number, releaseSignature?: string) {
+  const c = await cookies();
+  
     try {
-      const releaseSignatureKey = process.env.RELEASE_SIGNATURE_KEY;
+      const raw = c.get('publicKey')?.value;
+      const releaseSignatureKey = raw ? decodeURIComponent(raw) : undefined;
 
-      if (!releaseSignatureKey) {
-        throw new Error('Missing RELEASE_SIGNATURE_KEY environment variable');
+      if (!releaseSignature) {
+        throw new Error('Missing event signature');
       }
 
-      const content = jwt.verify(releaseSignature, releaseSignatureKey, {
-        algorithms: ['RS512'],
-      });
-      console.log(content);
-    } catch {
+      if (!releaseSignatureKey) {
+        throw new Error('Missing publicKey cookie');
+      }
+      
+      const { iss, aud } = jwt.verify(
+        releaseSignature,
+        `-----BEGIN PUBLIC KEY-----\n${releaseSignatureKey}\n-----END PUBLIC KEY-----`,
+        { algorithms: ['RS512']},
+      ) as JwtPayload;
+      if (iss !== 'poool' && aud !== process.env.NEXT_PUBLIC_POOOL_ID ) {
+        throw new Error('Issue with event signature');
+      }
+      
+    } catch (e) {
+      console.log(e);
       return { error: 'Invalid release signature' };
     }
-  }
 
   const response = await fetch(`http://localhost:3000/api/articles/${id}`, {
     method: 'POST',

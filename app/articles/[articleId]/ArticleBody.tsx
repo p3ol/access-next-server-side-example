@@ -19,10 +19,11 @@ const ArticleBody = ({ _article }: ArticleBodyProps) => {
   const [article, setArticle] = useState(_article);
 
   const onRelease = async (e: AccessReleaseEvent): Promise<void> => {
+    console.log(e);
     try {
       const releasedArticle = await releaseArticle(
         article.id,
-        e.releaseSignature
+        (e as any).releaseSignature
       );
 
       if (releasedArticle) {
@@ -39,7 +40,8 @@ const ArticleBody = ({ _article }: ArticleBodyProps) => {
     <AccessContext
       appId={process.env.NEXT_PUBLIC_POOOL_ID as string}
       config={{ cookies_enabled: true, force_widget: 'gift' }}
-      withAudit={true}
+      withAudit={false}
+      scriptUrl={process.env.NEXT_PUBLIC_POOOL_URL}
     >
       <p>{ article.content || article.preview }</p>
       <Paywall
