@@ -11,8 +11,9 @@ const Article = async ({
   params,
 }: ArticleProps) => {
   const { articleId } = await params;
+  const base = process.env.NEXT_PUBLIC_APP_URL ?? 'http://localhost:3000';
   const article: ArticleItem = await fetch(
-    `http://localhost:3000/api/articles/${articleId}`
+    `${base}/api/articles/${articleId}`
   ).then((res) => res.json());
 
   return (

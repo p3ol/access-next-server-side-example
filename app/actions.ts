@@ -32,7 +32,9 @@ export async function releaseArticle(id: number, releaseSignature?: string) {
       return { error: 'Invalid release signature' };
     }
 
-  const response = await fetch(`http://localhost:3000/api/articles/${id}`, {
+  const base = process.env.NEXT_PUBLIC_APP_URL ?? 'http://localhost:3000';
+
+  const response = await fetch(`${base}/api/articles/${id}`, {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
