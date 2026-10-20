@@ -1,7 +1,12 @@
 'use client';
 
 import { useState } from 'react';
-import { AccessContext, Paywall, Pixel } from '@poool/react-access';
+import {
+  type AccessReleaseEvent,
+  AccessContext,
+  Paywall,
+  Pixel,
+} from '@poool/react-access';
 
 import type { ArticleItem } from '~/types';
 import { releaseArticle } from '~/actions';
@@ -13,9 +18,13 @@ export interface ArticleBodyProps {
 const ArticleBody = ({ _article }: ArticleBodyProps) => {
   const [article, setArticle] = useState(_article);
 
-  const onRelease = async (): Promise<void> => {
+  const onRelease = async (e: AccessReleaseEvent): Promise<void> => {
+    console.log(e);
     try {
-      const releasedArticle = await releaseArticle(article.id);
+      const releasedArticle = await releaseArticle(
+        article.id,
+        (e as any).releaseSignature
+      );
 
       if (releasedArticle) {
         setArticle(releasedArticle);
@@ -23,15 +32,16 @@ const ArticleBody = ({ _article }: ArticleBodyProps) => {
         console.error('Failed to release article');
       }
     } catch (error) {
-      console.error('Error');
+      console.error('Error', error);
     }
   };
 
   return (
     <AccessContext
       appId={process.env.NEXT_PUBLIC_POOOL_ID as string}
-      config={{ cookies_enabled: true, force_widget: 'gift' }}
-      withAudit={true}
+      config={{ cookies_enabled: true, force_widget: 'gift', debug: true }}
+      withAudit={false}
+      scriptUrl={process.env.NEXT_PUBLIC_POOOL_URL || "https://assets.poool.fr/access.js"}
     >
       <p>{ article.content || article.preview }</p>
       <Paywall

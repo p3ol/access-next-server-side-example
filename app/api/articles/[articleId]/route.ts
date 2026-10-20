@@ -5,7 +5,7 @@ import { articles } from '~/db';
 
 export const GET = async (
   _: NextRequest,
-  { params }: { params: { articleId: string } }
+  { params }: { params: Promise<{ articleId: string }> }
 ) => {
   const { articleId } = await params;
   const article = articles.find(article => article.id === Number(articleId));
@@ -16,16 +16,17 @@ export const GET = async (
     });
   }
 
-  const { content, ...articleWithoutContent } = article;
-
-  return new Response(JSON.stringify(articleWithoutContent), {
+  return new Response(JSON.stringify({
+    ...article,
+    content: ''
+  }), {
     status: 200,
   });
 };
 
 export const POST = async (
   _: NextRequest,
-  { params }: { params: { articleId: string } }
+  { params }: { params: Promise<{ articleId: string }> }
 ) => {
   const { articleId } = await params;
   const article = articles.find(article => article.id === Number(articleId));
