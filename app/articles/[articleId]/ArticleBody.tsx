@@ -32,14 +32,14 @@ const ArticleBody = ({ _article }: ArticleBodyProps) => {
         console.error('Failed to release article');
       }
     } catch (error) {
-      console.error('Error');
+      console.error('Error', error);
     }
   };
 
   return (
     <AccessContext
       appId={process.env.NEXT_PUBLIC_POOOL_ID as string}
-      config={{ cookies_enabled: true, force_widget: 'gift' }}
+      config={{ cookies_enabled: true, force_widget: 'gift', debug: true }}
       withAudit={false}
       scriptUrl={process.env.NEXT_PUBLIC_POOOL_URL || "https://assets.poool.fr/access.js"}
     >

@@ -677,10 +677,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@junipero/core@npm:3.12.20":
-  version: 3.12.20
-  resolution: "@junipero/core@npm:3.12.20"
-  checksum: 10c0/49be75bde8890b7d43f4748304cf3c51a625b3d3b951a909e22b14dd73e9492d79bd09d27d8d8ddeefb4c50ec6b0d77582c184f125d2736388ff812389eeb44e
+"@junipero/core@npm:3.13.0":
+  version: 3.13.0
+  resolution: "@junipero/core@npm:3.13.0"
+  checksum: 10c0/3dcbf203f0d4fa8e8703967c700db2e8d3c99aa9442c92bdffff74afe47356d071fedabfdc2b63d033b679aff5619debf36fa1af8c130c275605155f6562a78a
   languageName: node
   linkType: hard
 
@@ -826,7 +826,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@poool/access-next-server-side-example@workspace:."
   dependencies:
-    "@poool/react-access": "npm:4.1.6"
+    "@poool/react-access": "npm:5.0.0"
     "@tailwindcss/postcss": "npm:4.3.3"
     "@types/jsonwebtoken": "npm:9.0.10"
     "@types/node": "npm:26.5.0"
@@ -844,15 +844,15 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@poool/react-access@npm:4.1.6":
-  version: 4.1.6
-  resolution: "@poool/react-access@npm:4.1.6"
+"@poool/react-access@npm:5.0.0":
+  version: 5.0.0
+  resolution: "@poool/react-access@npm:5.0.0"
   dependencies:
-    "@junipero/core": "npm:3.12.20"
+    "@junipero/core": "npm:3.13.0"
     "@types/poool-access": "npm:5.18.1"
   peerDependencies:
-    react: ^16.8.0 || ^17.0.0 || ^18.0.0 || ^19.0.0
-  checksum: 10c0/b1a5ad5bdf17cb010066bd007b7f68dabf2924892f0787a46d0560c9e811bb7ba6d2f1bcd6f103c842535b025c3ac58db5d4b0e208915dd071de8d66df59ed9b
+    react: ^18.0.0 || ^19.0.0
+  checksum: 10c0/e1642f5e4b9344a16e9e282ba2f0461a8024442bca7c605078741c99ba9c482d72389850633dca99ac76f95b44a9372a28f3782dbbfaae08c1d4fbec395973a8
   languageName: node
   linkType: hard
 

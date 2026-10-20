@@ -1,29 +1,35 @@
 'use server';
 
+import { createPublicKey } from 'node:crypto';
 import jwt, { type JwtPayload } from 'jsonwebtoken';
-import { cookies } from 'next/headers';
 
 export async function releaseArticle(id: number, releaseSignature?: string) {
-  const c = await cookies();
-  
     try {
-      const raw = c.get('publicKey')?.value;
-      const releaseSignatureKey = raw ? decodeURIComponent(raw) : undefined;
-
       if (!releaseSignature) {
         throw new Error('Missing event signature');
       }
 
-      if (!releaseSignatureKey) {
-        throw new Error('Missing publicKey cookie');
-      }
-      
+      // You can also get the public key from your environment.
+      const jwksResponse = await fetch(
+        `${process.env.POOOL_API_URL}` +
+        `/api/v4/rest/access/signature/jwks?bundleId=${process.env.NEXT_PUBLIC_POOOL_ID}`,
+        {
+          headers: {
+            'Authorization': `Bearer ${process.env.POOOL_PAT}`,
+          },
+        },
+      );
+      const { keys } = await jwksResponse.json();
+
+      const publicKey = createPublicKey({ key: keys[0], format: 'jwk' });
+
       const { iss, aud } = jwt.verify(
         releaseSignature,
-        `-----BEGIN PUBLIC KEY-----\n${releaseSignatureKey}\n-----END PUBLIC KEY-----`,
+        publicKey,
         { algorithms: ['RS512']},
       ) as JwtPayload;
-      if (iss !== 'poool' && aud !== process.env.NEXT_PUBLIC_POOOL_ID ) {
+      
+      if (iss !== 'poool' || aud !== process.env.NEXT_PUBLIC_POOOL_ID ) {
         throw new Error('Issue with event signature');
       }
       

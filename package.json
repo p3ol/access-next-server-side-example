@@ -2,13 +2,13 @@
   "name": "@poool/access-next-server-side-example",
   "version": "1.0.0",
   "scripts": {
-    "dev": "next dev",
+    "dev": "NODE_OPTIONS=--use-system-ca next dev",
     "build": "next build",
     "start": "next start",
     "lint": "next lint"
   },
   "dependencies": {
-    "@poool/react-access": "4.1.6",
+    "@poool/react-access": "5.0.0",
     "jsonwebtoken": "9.0.3",
     "next": "16.3.4",
     "react": "19.2.8",
